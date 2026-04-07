@@ -27,6 +27,13 @@ export default function Home({ setPage }) {
       <div className="home-cta">
         <button className="btn btn-primary" onClick={() => setPage('contact')}>Contact me</button>
         <a className="btn btn-outline" href="https://github.com/MLC1202" target="_blank" rel="noreferrer">GitHub</a>
+        <a
+          className="home-resume"
+          href="/Resume.pdf"
+          download
+        >
+          My Resume
+        </a>
       </div>
       <div className="home-tech-section">
         <p className="tech-label">Technologies and Tools</p>
