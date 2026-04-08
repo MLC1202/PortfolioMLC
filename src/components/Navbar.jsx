@@ -8,10 +8,10 @@ const NAV_LINKS = [
   { id: 'contact', label: 'Contact' },
 ];
 
-export default function Navbar({ activePage, setPage }) {
+export default function Navbar({ activeSection, scrollToSection }) {
   return (
     <nav className="navbar">
-      <button className="nav-logo" onClick={() => setPage('home')}>
+      <button className="nav-logo" onClick={() => scrollToSection('home')}>
         <span className="logo-arrow">&lt;/</span> MATHEUS <span className="logo-arrow">&gt;</span>
       </button>
 
@@ -19,8 +19,8 @@ export default function Navbar({ activePage, setPage }) {
         {NAV_LINKS.map((link) => (
           <li key={link.id}>
             <button
-              className={`nav-link ${activePage === link.id ? 'active' : ''}`}
-              onClick={() => setPage(link.id)}
+              className={`nav-link ${activeSection === link.id ? 'active' : ''}`}
+              onClick={() => scrollToSection(link.id)}
             >
               {link.label}
             </button>

@@ -12,7 +12,7 @@ const TECHS = [
   { name: 'Node.js', cls: 'node' },
 ];
 
-export default function Home({ setPage }) {
+export default function Home({ scrollToSection }) {
   return (
     <section className="home">
       <p className="home-greeting">
@@ -25,7 +25,7 @@ export default function Home({ setPage }) {
         Developer focused on building high-quality solutions, combining logical thinking, attention to detail, and a commitment to clean, maintainable code.
       </p>
       <div className="home-cta">
-        <button className="btn btn-primary" onClick={() => setPage('contact')}>Contact me</button>
+        <button className="btn btn-primary" onClick={() => scrollToSection('contact')}>Contact me</button>
         <a className="btn btn-outline" href="https://github.com/MLC1202" target="_blank" rel="noreferrer">GitHub</a>
         <a
           className="home-resume"

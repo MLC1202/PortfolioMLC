@@ -34,6 +34,23 @@ const PROJECTS = [
     github: 'https://github.com/veloy25/Projeto-1-Semestre---ECM516-ECM252.git', 
     demo: null,
   },
+  {
+    id: 3,
+    title: 'Vagas Inteligentes',
+    emoji: '🚗',
+    image: null, /* 👇 Ex: '/images/smartparking.png' */
+    status: 'Work in Progress',
+    statusType: 'wip',
+    shortDesc: 'A smart parking system designed to optimize parking space usage and enhance user convenience through real-time monitoring and management.',
+    fullDesc:
+      'This project is a smart parking system developed to optimize the use of parking spaces and enhance user convenience through real-time monitoring and management. The system utilizes sensors to detect the occupancy of parking spaces, providing users with up-to-date information on available spots. ' +
+      'The platform includes a user-friendly interface that allows drivers to easily find and reserve parking spaces, while also offering features for parking lot administrators to efficiently manage their facilities. ' +
+      'By leveraging technology, this solution aims to reduce traffic congestion, save time for drivers, and improve the overall parking experience.',
+
+    techs: [],
+    github: 'https://github.com/MLC1202/Projeto_Vagas_Inteligentes',
+    demo: null,
+  }
 ];
 
 export default function Projects() {

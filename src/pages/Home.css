@@ -20,8 +20,9 @@
 
 
 .home-course {
+  font-family: 'Outfit', sans-serif;
   font-size: clamp(40px, 6vw, 58px);
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.1;
   color: var(--text-primary);
   margin-bottom: 1.5rem;
