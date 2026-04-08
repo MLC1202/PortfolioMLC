@@ -47,7 +47,7 @@ const PROJECTS = [
       'The platform includes a user-friendly interface that allows drivers to easily find and reserve parking spaces, while also offering features for parking lot administrators to efficiently manage their facilities. ' +
       'By leveraging technology, this solution aims to reduce traffic congestion, save time for drivers, and improve the overall parking experience.',
 
-    techs: [],
+    techs: ['C', 'Raspberry Pi Pico', 'Sensors', 'RFID'],
     github: 'https://github.com/MLC1202/Projeto_Vagas_Inteligentes',
     demo: null,
   }
