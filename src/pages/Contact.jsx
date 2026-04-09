@@ -87,6 +87,10 @@ export default function Contact() {
             </form>
           </div>
         </div>
+
+        <footer className="contact-footer">
+          <p>© {new Date().getFullYear()} Matheus Cardoso. All rights reserved.</p>
+        </footer>
       </div>
     </section>
   );
