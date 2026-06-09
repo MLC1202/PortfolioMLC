@@ -6,7 +6,7 @@ const PROJECTS = [
     id: 1,
     title: 'Kahoot Clone',
     emoji: '🎮',
-    image: null,
+    image: '/public/images/Kahoot.png',
     status: 'Done',
     statusType: 'done',
     shortDesc: 'A simple and interactive multiplayer quiz platform inspired by Kahoot, fully developed in Java.',
@@ -22,8 +22,8 @@ const PROJECTS = [
     id: 2,
     title: 'AUventura Park Website',
     emoji: '🐾',
-    image: null,
-    status: 'Work in Progress',
+    image: '/public/images/AUventuraPark.png',
+    status: 'Work in progress',
     statusType: 'wip',
     shortDesc: 'A pet daycare management platform focused on providing a practical, organized, and reliable experience for both pet owners and staff.',
     fullDesc:
@@ -31,15 +31,15 @@ const PROJECTS = [
       'The idea is to combine organization, accessibility, and a user-friendly experience in a solution that supports both the business and its customers. ' +
       'The platform was developed with a focus on structuring the service digitally, making it easier to manage information, present the business, and improve communication with pet owners. Beyond the technical side, the project also reflects a business-oriented approach by connecting software development with a real market need.',
     techs: ['React', 'Node.js', 'JavaScript', 'CSS', 'HTML'],
-    github: 'https://github.com/veloy25/Projeto-1-Semestre---ECM516-ECM252.git',
+    github: 'https://github.com/MLC1202/AUventuraPark-Website.git',
     demo: null,
   },
   {
     id: 3,
     title: 'Vagas Inteligentes',
     emoji: '🚗',
-    image: null,
-    status: 'Work in Progress',
+    image: '/public/images/Vagas.png',
+    status: 'Done',
     statusType: 'wip',
     shortDesc: 'A smart parking system designed to optimize parking space usage and enhance user convenience through real-time monitoring and management.',
     fullDesc:
