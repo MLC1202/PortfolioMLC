@@ -89,7 +89,7 @@
 }
 
 .project-thumb {
-  height: 140px;
+  height: 250px;
   background: var(--bg-secondary);
   display: flex;
   align-items: center;
@@ -172,11 +172,22 @@
   background: var(--bg-secondary);
   border: 0.5px solid var(--border);
   border-radius: var(--radius-lg);
-  max-width: 540px;
+  max-width: 1000px;  
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
   position: relative;
+}
+
+.modal-thumb {
+  height: 700px;  
+  background: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 0.5px solid var(--border);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  overflow: hidden;
 }
 
 .modal-close {
@@ -201,17 +212,6 @@
 .modal-close:hover {
   border-color: var(--accent);
   color: var(--text-primary);
-}
-
-.modal-thumb {
-  height: 200px;
-  background: var(--bg-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 0.5px solid var(--border);
-  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-  overflow: hidden;
 }
 
 .modal-img {

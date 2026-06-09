@@ -6,7 +6,7 @@ const PROJECTS = [
     id: 1,
     title: 'Kahoot Clone',
     emoji: '🎮',
-    image: '/public/images/Kahoot.png',
+    image: null,
     status: 'Done',
     statusType: 'done',
     shortDesc: 'A simple and interactive multiplayer quiz platform inspired by Kahoot, fully developed in Java.',
@@ -22,7 +22,7 @@ const PROJECTS = [
     id: 2,
     title: 'AUventura Park Website',
     emoji: '🐾',
-    image: '/public/images/AUventuraPark.png',
+    image: '/images/AUventura.png',
     status: 'Work in progress',
     statusType: 'wip',
     shortDesc: 'A pet daycare management platform focused on providing a practical, organized, and reliable experience for both pet owners and staff.',
@@ -38,15 +38,15 @@ const PROJECTS = [
     id: 3,
     title: 'Vagas Inteligentes',
     emoji: '🚗',
-    image: '/public/images/Vagas.png',
+    image: '/images/Vagas.png',
     status: 'Done',
-    statusType: 'wip',
+    statusType: 'done',
     shortDesc: 'A smart parking system designed to optimize parking space usage and enhance user convenience through real-time monitoring and management.',
     fullDesc:
       'This project is a smart parking system developed to optimize the use of parking spaces and enhance user convenience through real-time monitoring and management. The system utilizes sensors to detect the occupancy of parking spaces, providing users with up-to-date information on available spots. ' +
       'The platform includes a user-friendly interface that allows drivers to easily find and reserve parking spaces, while also offering features for parking lot administrators to efficiently manage their facilities. ' +
       'By leveraging technology, this solution aims to reduce traffic congestion, save time for drivers, and improve the overall parking experience.',
-    techs: ['C', 'Raspberry Pi Pico', 'Sensors', 'RFID'],
+    techs: ['Micro Python', 'Raspberry Pi Pico', 'Ultrasonic Sensor', 'RFID', 'IR sensors', 'Microservo'],
     github: 'https://github.com/MLC1202/Projeto_Vagas_Inteligentes',
     demo: null,
   }
