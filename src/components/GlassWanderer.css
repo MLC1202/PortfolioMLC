@@ -1,0 +1,74 @@
+.wanderer {
+  display: none;
+}
+
+/* translate e rotate separados de transform para não brigar com a animação de morph */
+@keyframes zigzag {
+  0%   { translate: calc(100vw - 300px) 14vh; rotate: 0deg; }
+  20%  { translate: -70px 52vh;               rotate: 80deg; }
+  40%  { translate: calc(100vw - 150px) 16vh; rotate: 170deg; }
+  60%  { translate: -90px 56vh;               rotate: 250deg; }
+  80%  { translate: calc(100vw - 160px) 22vh; rotate: 320deg; }
+  100% { translate: 20px 48vh;                rotate: 360deg; }
+}
+
+@keyframes morph {
+  0%, 100% { border-radius: 58% 42% 63% 37% / 45% 55% 45% 55%; }
+  33%      { border-radius: 38% 62% 42% 58% / 60% 35% 65% 40%; }
+  66%      { border-radius: 50% 50% 35% 65% / 38% 62% 38% 62%; }
+}
+
+@supports (animation-timeline: scroll()) {
+  .wanderer {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 200px;
+    height: 200px;
+    pointer-events: none;
+    animation-name: zigzag;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-timeline: scroll(root);
+  }
+}
+
+.wanderer-blob {
+  width: 200px;
+  height: 200px;
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.38) 0%, rgba(255, 255, 255, 0) 38%),
+    radial-gradient(circle at 70% 75%, rgba(201, 242, 77, 0.45) 0%, transparent 62%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  box-shadow:
+    inset 0 2px 1px rgba(255, 255, 255, 0.45),
+    inset 0 -14px 34px rgba(0, 0, 0, 0.3),
+    0 0 90px rgba(201, 242, 77, 0.22);
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  animation: morph 9s ease-in-out infinite;
+}
+
+.wanderer-orb {
+  position: absolute;
+  right: -34px;
+  bottom: -22px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.06) 50%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.5), 0 12px 30px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+}
+
+/* No celular não há margem lateral livre: a forma ficaria em cima do texto */
+@media (max-width: 900px), (prefers-reduced-motion: reduce) {
+  .wanderer {
+    display: none;
+  }
+}

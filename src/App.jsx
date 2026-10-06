@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Navbar from './components/Navbar';
+import GlassWanderer from './components/GlassWanderer';
 import Home from './pages/Home';
 import About from './pages/About';
 import Skills from './pages/Skills';
@@ -45,15 +46,14 @@ export default function App() {
     return () => observer.disconnect();
   }, []);
 
-  const showNavbar = activeSection !== 'home';
-
   return (
     <div className="app">
       <Navbar
         activeSection={activeSection}
         scrollToSection={scrollToSection}
-        showNavbar={showNavbar}
       />
+
+      <GlassWanderer />
 
       <main className="main-content">
         <div

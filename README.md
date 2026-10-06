@@ -1,6 +1,25 @@
 # 🚀 Portfólio — Matheus
 
-Portfólio pessoal desenvolvido com **React** (Create React App).
+Portfólio pessoal desenvolvido com **React** (Create React App): apresentação, sobre, skills, projetos (com modal de detalhes) e contato, com visual escuro, efeitos de vidro (*liquid glass*) e animações ligadas à rolagem.
+
+---
+
+## ▶️ Como rodar
+
+Pré-requisito: Node.js 18+ e npm.
+
+```bash
+npm install
+npm start
+```
+
+O site abre em `http://localhost:3000`. Para gerar a versão de produção:
+
+```bash
+npm run build
+```
+
+O resultado fica na pasta `build/`.
 
 ---
 
@@ -11,12 +30,17 @@ portfolio/
 ├── public/
 │   ├── images/
 │   │   ├── About.jpg
-│   │   └── home.png
+│   │   ├── AUventura.png
+│   │   ├── home.png
+│   │   ├── RelogioXadrez.jpg
+│   │   └── Vagas.png
 │   ├── favicon.ico
 │   ├── index.html
-│   └── Resume.pdf
+│   └── Resume.pdf          # currículo baixado pelo botão "Currículo"
 ├── src/
 │   ├── components/
+│   │   ├── GlassWanderer.css
+│   │   ├── GlassWanderer.jsx   # forma de vidro que acompanha a rolagem
 │   │   ├── Navbar.css
 │   │   └── Navbar.jsx
 │   ├── pages/
@@ -47,4 +71,6 @@ portfolio/
 - React 18
 - JavaScript (ES6+)
 - CSS com variáveis customizadas
+- Scroll-driven animations (`animation-timeline`) — no Firefox as animações de rolagem ficam desativadas e o conteúdo aparece normalmente
+- react-icons
 - Create React App

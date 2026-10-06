@@ -1,42 +1,49 @@
 import React from 'react';
 import './Skills.css';
 
-const skills = [
-    { name: 'Java', level: 'Advanced', levelClass: 'skill-fill-advanced' },
-    { name: 'JavaScript', level: 'Advanced', levelClass: 'skill-fill-advanced' },
-    { name: 'HTML/CSS', level: 'Intermediate', levelClass: 'skill-fill-intermediate' },
-    { name: 'SQL', level: 'Advanced', levelClass: 'skill-fill-advanced' },
-    { name: 'Excel', level: 'Advanced', levelClass: 'skill-fill-advanced' },
-    { name: 'Git', level: 'Advanced', levelClass: 'skill-fill-advanced' },
-    { name: 'React', level: 'Intermediate', levelClass: 'skill-fill-intermediate' },
-    { name: 'Node.js', level: 'Intermediate', levelClass: 'skill-fill-intermediate' },
-    { name: 'Python', level: 'Intermediate', levelClass: 'skill-fill-intermediate' },
+const LEVEL_PERCENT = {
+  Avançado: 85,
+  Intermediário: 60,
+};
+
+const SKILLS = [
+  { name: 'Java', level: 'Avançado' },
+  { name: 'JavaScript', level: 'Avançado' },
+  { name: 'SQL', level: 'Avançado' },
+  { name: 'Git / GitHub', level: 'Avançado' },
+  { name: 'Excel', level: 'Avançado' },
+  { name: 'React', level: 'Intermediário' },
+  { name: 'Node.js', level: 'Intermediário' },
+  { name: 'Python', level: 'Intermediário' },
+  { name: 'HTML/CSS', level: 'Intermediário' },
+  { name: 'TypeScript', level: 'Intermediário' },
+  { name: 'PL/SQL', level: 'Intermediário' },
+  { name: 'Oracle APEX', level: 'Intermediário' },
+  { name: 'Docker', level: 'Intermediário' },
+  { name: 'Kubernetes', level: 'Intermediário' },
 ];
 
 export default function Skills() {
   return (
-    <section className="skills">
-      <div className="skills-background">
-        <div className="skills-glow skills-glow-1"></div>
-        <div className="skills-glow skills-glow-2"></div>
-      </div>
-
-      <div className="skills-container">
-        <div className="skills-heading">
-          <h2 className="skills-title">Skills</h2>
-          <span className="skills-title-line"></span>
+    <section className="section">
+      <div className="container">
+        <div className="section-heading reveal">
+          <span className="pill-label">Skills</span>
+          <h2 className="section-title">Ferramentas <span>que eu uso</span></h2>
         </div>
 
         <div className="skills-grid">
-          {skills.map((skill) => (
-            <div className="skill-card" key={skill.name}>
+          {SKILLS.map((skill, index) => (
+            <div className="card skill-card reveal" key={skill.name}>
               <div className="skill-top">
-                <span className="skill-name">{skill.name}</span>
-                <span className="skill-level">{skill.level}</span>
+                <span className="skill-number">{String(index + 1).padStart(2, '0')}</span>
+                <span className="card-label">{skill.level}</span>
               </div>
 
-              <div className="skill-bar">
-                <span className={`skill-fill ${skill.levelClass}`}></span>
+              <span className="skill-name">{skill.name}</span>
+
+              <div className="level-bar">
+                <span style={{ width: `${LEVEL_PERCENT[skill.level]}%` }} />
               </div>
             </div>
           ))}

@@ -2,14 +2,17 @@ import React from 'react';
 import './Contact.css';
 import { MdEmail } from 'react-icons/md';
 import { FaLinkedinIn, FaGithub, FaWhatsapp } from 'react-icons/fa';
+import { FiArrowUpRight, FiArrowUp } from 'react-icons/fi';
+
+const EMAIL = 'tecocardoso1@gmail.com';
 
 const CONTACTS = [
   {
     id: 'email',
     icon: <MdEmail />,
-    label: 'Email',
-    value: 'tecocardoso1@gmail.com',
-    href: 'mailto:tecocardoso1@gmail.com',
+    label: 'E-mail',
+    value: EMAIL,
+    href: `mailto:${EMAIL}`,
   },
   {
     id: 'linkedin',
@@ -29,28 +32,35 @@ const CONTACTS = [
     id: 'whatsapp',
     icon: <FaWhatsapp />,
     label: 'WhatsApp',
-    value: '+55 11 99940-0892',
+    value: '(11) 99940-0892',
     href: 'https://wa.me/5511999400892',
   },
 ];
 
+// Sem backend: o envio abre o app de e-mail do visitante com a mensagem já preenchida
+function handleSubmit(event) {
+  event.preventDefault();
+  const form = new FormData(event.currentTarget);
+
+  const subject = form.get('subject') || 'Contato pelo portfólio';
+  const body = `${form.get('message')}\n\n${form.get('name')} — ${form.get('email')}`;
+
+  window.location.href =
+    `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
 export default function Contact() {
   return (
-    <section className="contact">
-      <div className="contact-background">
-        <div className="contact-glow contact-glow-1"></div>
-        <div className="contact-glow contact-glow-2"></div>
-      </div>
-
-      <div className="contact-container">
-        <div className="contact-heading">
-          <h2 className="contact-title">Contact</h2>
-          <span className="contact-title-line"></span>
+    <section className="section">
+      <div className="container contact">
+        <div className="section-heading reveal">
+          <span className="pill-label">Contato</span>
+          <h2 className="section-title">Vamos trabalhar <span>juntos</span></h2>
         </div>
 
         <div className="contact-layout">
-          <div className="contact-info-card card">
-            <h3 className="contact-info-title">Contact Information</h3>
+          <div className="card contact-info-card reveal">
+            <h3 className="contact-card-title">Informações de contato</h3>
 
             <div className="contact-list">
               {CONTACTS.map((item) => (
@@ -61,35 +71,56 @@ export default function Contact() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <div className="contact-icon">{item.icon}</div>
+                  <span className="contact-icon" aria-hidden="true">{item.icon}</span>
 
-                  <div className="contact-info">
-                    <span className="contact-label">{item.label}</span>
+                  <span className="contact-info">
+                    <span className="card-label">{item.label}</span>
                     <span className="contact-value">{item.value}</span>
-                  </div>
+                  </span>
                 </a>
               ))}
             </div>
           </div>
 
-          <div className="contact-form-card card">
-            <h3 className="contact-form-title">Send Me a Message</h3>
+          <form className="card contact-form-card reveal" onSubmit={handleSubmit}>
+            <h3 className="contact-card-title">Envie uma mensagem</h3>
 
-            <form className="contact-form">
-              <input type="text" placeholder="Your Name" />
-              <input type="email" placeholder="Your Email" />
-              <input type="text" placeholder="Subject" />
-              <textarea placeholder="Your Message" rows="6"></textarea>
+            <div className="contact-form-row">
+              <label className="contact-field">
+                Seu nome
+                <input type="text" name="name" required />
+              </label>
 
-              <button type="submit" className="contact-submit">
-                Send Message
-              </button>
-            </form>
-          </div>
+              <label className="contact-field">
+                Seu e-mail
+                <input type="email" name="email" required />
+              </label>
+            </div>
+
+            <label className="contact-field">
+              Assunto
+              <input type="text" name="subject" />
+            </label>
+
+            <label className="contact-field">
+              Mensagem
+              <textarea name="message" rows="6" required />
+            </label>
+
+            <button type="submit" className="btn-pill btn-primary contact-submit">
+              Enviar mensagem
+              <span className="btn-icon"><FiArrowUpRight aria-hidden="true" /></span>
+            </button>
+          </form>
         </div>
 
         <footer className="contact-footer">
-          <p>© {new Date().getFullYear()} Matheus Cardoso. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Matheus Cardoso. Todos os direitos reservados.</p>
+
+          <a href="#home" className="contact-top">
+            Voltar ao topo
+            <span className="circle-link"><FiArrowUp aria-hidden="true" /></span>
+          </a>
         </footer>
       </div>
     </section>

@@ -1,76 +1,98 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './Projects.css';
+import { FiArrowUpRight, FiX } from 'react-icons/fi';
 
 const PROJECTS = [
   {
     id: 1,
-    title: 'Kahoot Clone',
-    emoji: '🎮',
-    image: null,
-    status: 'Done',
-    statusType: 'done',
-    shortDesc: 'A simple and interactive multiplayer quiz platform inspired by Kahoot, fully developed in Java.',
+    title: 'AUventura Park',
+    image: '/images/AUventura.png',
+    imagePosition: '50% 0%',
+    status: 'Em andamento',
+    done: false,
+    shortDesc: 'Plataforma fullstack para gestão de uma creche de pets, com agendamento e autenticação.',
     fullDesc:
-      'This system allows a teacher to create quizzes and students to participate live by answering questions through a desktop application. ' +
-      'Each participant receives points based on speed and accuracy. At the end, the results are displayed in a ranking. ' +
-      'Our focus is to develop a simple and interactive multiplayer system, bringing an experience similar to Kahoot, but entirely built in Java.',
-    techs: ['Java', 'MySQL'],
-    github: 'https://github.com/MLC1202/ProjetoFinal_LP.git',
-    demo: null,
+      'Aplicação fullstack para gestão de uma creche de pets, com frontend em React/Vite, backend em Node.js/Express e banco de dados MySQL.',
+    highlights: [
+      'Implementação do fluxo de agendamento (booking) e da lógica de autenticação/login',
+      'Migração da arquitetura de monólito para microsserviços com API Gateway',
+      'Refatoração de frontend, roteamento e componentes de navegação',
+    ],
+    techs: ['React', 'Vite', 'Node.js', 'Express', 'MySQL'],
+    github: 'https://github.com/MLC1202/AUventuraPark-Website.git',
   },
   {
     id: 2,
-    title: 'AUventura Park Website',
-    emoji: '🐾',
-    image: '/images/AUventura.png',
-    status: 'Work in progress',
-    statusType: 'wip',
-    shortDesc: 'A pet daycare management platform focused on providing a practical, organized, and reliable experience for both pet owners and staff.',
+    title: 'Vagas Inteligentes',
+    image: '/images/Vagas.png',
+    imagePosition: '50% 38%',
+    status: 'Concluído',
+    done: true,
+    shortDesc: 'Sistema de monitoramento e controle de estacionamento com sensores e acesso via RFID.',
     fullDesc:
-      'This project is a web platform designed for a pet daycare service, created to provide pet owners with a practical and trustworthy way to connect with daily care services for their pets. ' +
-      'The idea is to combine organization, accessibility, and a user-friendly experience in a solution that supports both the business and its customers. ' +
-      'The platform was developed with a focus on structuring the service digitally, making it easier to manage information, present the business, and improve communication with pet owners. Beyond the technical side, the project also reflects a business-oriented approach by connecting software development with a real market need.',
-    techs: ['React', 'Node.js', 'JavaScript', 'CSS', 'HTML'],
-    github: 'https://github.com/MLC1202/AUventuraPark-Website.git',
-    demo: null,
+      'Sistema inteligente de monitoramento e controle de estacionamento, desenvolvido em MicroPython para Raspberry Pi Pico.',
+    highlights: [
+      'Integração de sensores ultrassônico e infravermelho, display OLED e trava servo-controlada',
+      'Leitura de tags RFID para controle de ocupação das vagas',
+      'Lógica de check-in/check-out de vagas baseada em RFID',
+    ],
+    techs: ['MicroPython', 'Raspberry Pi Pico', 'RFID', 'Ultrassônico', 'Infravermelho', 'OLED', 'Servo'],
+    github: 'https://github.com/MLC1202/Projeto_Vagas_Inteligentes',
   },
   {
     id: 3,
-    title: 'Vagas Inteligentes',
-    emoji: '🚗',
-    image: '/images/Vagas.png',
-    status: 'Done',
-    statusType: 'done',
-    shortDesc: 'A smart parking system designed to optimize parking space usage and enhance user convenience through real-time monitoring and management.',
+    title: 'Quiz inspirado no Kahoot',
+    image: null,
+    status: 'Concluído',
+    done: true,
+    shortDesc: 'Quiz multiplayer em Java com arquitetura cliente-servidor e banco de dados.',
     fullDesc:
-      'This project is a smart parking system developed to optimize the use of parking spaces and enhance user convenience through real-time monitoring and management. The system utilizes sensors to detect the occupancy of parking spaces, providing users with up-to-date information on available spots. ' +
-      'The platform includes a user-friendly interface that allows drivers to easily find and reserve parking spaces, while also offering features for parking lot administrators to efficiently manage their facilities. ' +
-      'By leveraging technology, this solution aims to reduce traffic congestion, save time for drivers, and improve the overall parking experience.',
-    techs: ['Micro Python', 'Raspberry Pi Pico', 'Ultrasonic Sensor', 'RFID', 'IR sensors', 'Microservo'],
-    github: 'https://github.com/MLC1202/Projeto_Vagas_Inteligentes',
-    demo: null,
-  }
+      'Projeto com arquitetura cliente-servidor e integração com banco de dados: o professor cria o quiz, os alunos respondem ao vivo e a pontuação considera velocidade e acerto.',
+    highlights: [
+      'Suporte a múltiplos idiomas, com arquivo de traduções dedicado por idioma',
+      'Estruturação de chaves de tradução para todos os textos do frontend',
+    ],
+    techs: ['Java', 'MySQL', 'Cliente-servidor'],
+    github: 'https://github.com/MLC1202/ProjetoFinal_LP.git',
+  },
+  {
+    id: 4,
+    title: 'Relógio de Xadrez',
+    image: '/images/RelogioXadrez.jpg',
+    imagePosition: '50% 50%',
+    status: 'Concluído',
+    done: true,
+    shortDesc: 'Relógio de xadrez funcional, com carcaça impressa em 3D e componentes eletrônicos.',
+    fullDesc:
+      'Relógio de xadrez funcional, com carcaça impressa em 3D, displays de 7 segmentos e botões de controle.',
+    highlights: [
+      'Aplicação de conceitos de programação embarcada e sistemas eletrônicos',
+    ],
+    techs: ['Embarcados', 'Eletrônica', 'Impressão 3D'],
+    github: null,
+  },
 ];
 
 export default function Projects() {
   const [selected, setSelected] = useState(null);
 
   return (
-    <section className="projects">
-      <div className="projects-background">
-        <div className="projects-glow projects-glow-1"></div>
-        <div className="projects-glow projects-glow-2"></div>
-      </div>
-
-      <div className="projects-container">
-        <div className="projects-heading">
-          <h2 className="projects-title">Projects</h2>
-          <span className="projects-title-line"></span>
+    <section className="section-alt">
+      <div className="container">
+        <div className="projects-heading reveal">
+          <div className="projects-heading-title">
+            <span className="pill-label">Projetos</span>
+            <h2 className="section-title">O que eu <span>construí</span></h2>
+          </div>
+          <p className="projects-heading-text">
+            De microcontroladores e sensores a plataformas web e apps desktop.
+            Abra um projeto para ver os detalhes.
+          </p>
         </div>
 
         <div className="projects-grid">
-          {PROJECTS.map((p) => (
-            <ProjectCard key={p.id} project={p} onClick={() => setSelected(p)} />
+          {PROJECTS.map((project) => (
+            <ProjectCard key={project.id} project={project} onOpen={() => setSelected(project)} />
           ))}
         </div>
       </div>
@@ -82,92 +104,146 @@ export default function Projects() {
   );
 }
 
-function ProjectCard({ project, onClick }) {
-  const { title, emoji, image, status, statusType, shortDesc, techs } = project;
+function ProjectImage({ project, large = false }) {
+  if (!project.image) {
+    return <QuizIllustration large={large} />;
+  }
 
   return (
-    <div
-      className="project-card card"
-      onClick={onClick}
-      role="button"
-      tabIndex={0}
-      onKeyDown={(e) => e.key === 'Enter' && onClick()}
-    >
+    <img
+      src={project.image}
+      alt={project.title}
+      className={large ? 'project-img' : 'project-img flow'}
+      style={{ objectPosition: project.imagePosition }}
+    />
+  );
+}
+
+function StatusBadge({ project }) {
+  return (
+    <span className={`status-badge ${project.done ? 'status-done' : 'status-wip'}`}>
+      {project.status}
+    </span>
+  );
+}
+
+function ProjectCard({ project, onOpen }) {
+  return (
+    <article className="card project-card reveal">
       <div className="project-thumb">
-        {image ? (
-          <img src={image} alt={title} className="project-img" />
-        ) : (
-          <span className="project-emoji">{emoji}</span>
-        )}
+        <ProjectImage project={project} />
       </div>
 
       <div className="project-body">
         <div className="project-title-row">
-          <h3>{title}</h3>
-          <span className={`badge ${statusType === 'done' ? 'badge-green' : 'badge-yellow'}`}>
-            {status}
-          </span>
+          <h3>{project.title}</h3>
+          <StatusBadge project={project} />
         </div>
 
-        <p className="project-desc">{shortDesc}</p>
+        <p className="project-desc">{project.shortDesc}</p>
 
         <div className="project-tags">
-          {techs.map((t) => (
-            <span key={t} className="tech-tag">{t}</span>
+          {project.techs.map((tech) => (
+            <span key={tech} className="tech-tag">{tech}</span>
           ))}
         </div>
 
-        <span className="project-hint">Click to see more →</span>
+        <button className="project-open" onClick={onOpen}>
+          Ver detalhes
+          <span className="project-open-icon"><FiArrowUpRight aria-hidden="true" /></span>
+        </button>
+      </div>
+    </article>
+  );
+}
+
+function ProjectModal({ project, onClose }) {
+  const closeButtonRef = useRef(null);
+
+  useEffect(() => {
+    closeButtonRef.current?.focus();
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') onClose();
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
+
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div
+        className="modal-box"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="project-modal-title"
+        onClick={(event) => event.stopPropagation()}
+      >
+        <button
+          ref={closeButtonRef}
+          className="modal-close"
+          onClick={onClose}
+          aria-label="Fechar"
+        >
+          <FiX aria-hidden="true" />
+        </button>
+
+        <div className="modal-thumb">
+          <ProjectImage project={project} large />
+        </div>
+
+        <div className="modal-content">
+          <div className="modal-title-row">
+            <h3 id="project-modal-title">{project.title}</h3>
+            <StatusBadge project={project} />
+          </div>
+
+          <p className="modal-desc">{project.fullDesc}</p>
+
+          <ul className="modal-highlights">
+            {project.highlights.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+
+          <div className="project-tags">
+            {project.techs.map((tech) => (
+              <span key={tech} className="tech-tag">{tech}</span>
+            ))}
+          </div>
+
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-pill btn-primary modal-github"
+            >
+              Ver no GitHub
+              <span className="btn-icon"><FiArrowUpRight aria-hidden="true" /></span>
+            </a>
+          )}
+        </div>
       </div>
     </div>
   );
 }
 
-function ProjectModal({ project, onClose }) {
-  const { title, emoji, image, status, statusType, fullDesc, techs, github, demo } = project;
-
+// Ilustração própria no lugar de um print do Kahoot, que é marca de terceiros
+function QuizIllustration({ large }) {
   return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-box" onClick={(e) => e.stopPropagation()}>
-        <button className="modal-close" onClick={onClose} aria-label="Fechar">✕</button>
-
-        <div className="modal-thumb">
-          {image ? (
-            <img src={image} alt={title} className="modal-img" />
-          ) : (
-            <span className="modal-emoji">{emoji}</span>
-          )}
-        </div>
-
-        <div className="modal-content">
-          <div className="modal-title-row">
-            <h3>{title}</h3>
-            <span className={`badge ${statusType === 'done' ? 'badge-green' : 'badge-yellow'}`}>
-              {status}
-            </span>
-          </div>
-
-          <p className="modal-desc">{fullDesc}</p>
-
-          <div className="modal-tags">
-            {techs.map((t) => (
-              <span key={t} className="tech-tag">{t}</span>
-            ))}
-          </div>
-
-          <div className="modal-links">
-            {github && (
-              <a href={github} target="_blank" rel="noreferrer" className="btn btn-outline">
-                GitHub
-              </a>
-            )}
-            {demo && (
-              <a href={demo} target="_blank" rel="noreferrer" className="btn btn-primary">
-                Ver demo
-              </a>
-            )}
-          </div>
-        </div>
+    <div className={`quiz ${large ? 'quiz-large' : ''}`} aria-hidden="true">
+      <div className="quiz-top">
+        <span>Pergunta 3 / 10</span>
+        <span className="quiz-timer">12</span>
+      </div>
+      <div className="quiz-question">Qual palavra-chave cria um objeto em Java?</div>
+      <div className="quiz-answers">
+        <span className="quiz-answer quiz-a">A · class</span>
+        <span className="quiz-answer quiz-b">B · new</span>
+        <span className="quiz-answer quiz-c">C · this</span>
+        <span className="quiz-answer quiz-d">D · static</span>
       </div>
     </div>
   );
