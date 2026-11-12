@@ -2,6 +2,9 @@ import React from 'react';
 import './Home.css';
 import { FaGithub, FaLinkedinIn, FaEnvelope } from 'react-icons/fa';
 import { FiArrowUpRight } from 'react-icons/fi';
+import { PROJECTS } from '../data/projects';
+
+const DELIVERED_COUNT = PROJECTS.filter((project) => project.done).length;
 
 export default function Home({ scrollToSection }) {
   return (
@@ -93,7 +96,7 @@ export default function Home({ scrollToSection }) {
 
           <div className="glass-card-wrap float">
             <button className="glass glass-card" onClick={() => scrollToSection('projects')}>
-              <span className="glass-card-number">04</span>
+              <span className="glass-card-number">{String(DELIVERED_COUNT).padStart(2, '0')}</span>
               <span className="glass-card-label">Projetos entregues</span>
               <span className="glass-card-icon"><FiArrowUpRight aria-hidden="true" /></span>
             </button>
